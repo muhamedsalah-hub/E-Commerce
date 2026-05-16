@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/home">
+      <img src="./assets/images/freshcart-logo.svg" alt="ecommerce-logo" />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse d-flex justify-content-between"
+      id="navbarNav"
+    >
+      <ul class="navbar-nav">
+        @for (navdata of navData; track navdata.id) {
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLinkActive="active-link"
+              [routerLink]="navdata.path"
+              >{{ "navbar." + navdata.name | translate }}</a
+            >
+          </li>
+        }
+      </ul>
+      <div class="d-flex">
+        <div class="mx-2">
+          <select
+            (change)="change($event)"
+            class="form-select border-0 cursor-pointer"
+            aria-label="select language"
+          >
+            <option class="cursor-pointer" selected value="en">EN</option>
+            <option class="cursor-pointer" value="ar">AR</option>
+          </select>
+        </div>
+        <ul class="navbar-nav mx-2">
+          @for (navLink of navLinks; track navLink.id) {
+            @if (navLink.id !== 6) {
+              <li class="nav-item cursor-pointer">
+                <a class="nav-link position-relative">
+                  <i [class]="navLink.class"></i>
+                  @if (navLink.id == 1) {
+                    <span class="badge bg-info position-absolute top-0 start-0"
+                      >{{cartCounter()}}</span
+                    >
+                  }
+                  {{ navLink.name }}
+                </a>
+              </li>
+            } @else {
+              <li (click)="signOut()" class="nav-item cursor-pointer">
+                <a class="nav-link"
+                  ><i [class]="navLink.class" class="fa-brands"></i
+                  >{{ "navbar." + navLink.name | translate }}</a
+                >
+              </li>
+            }
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
