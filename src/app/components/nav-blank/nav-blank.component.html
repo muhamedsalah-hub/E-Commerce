@@ -48,7 +48,7 @@
                 <a class="nav-link position-relative">
                   <i [class]="navLink.class"></i>
                   @if (navLink.id == 1) {
-                    <span class="badge bg-info position-absolute top-0 start-0"
+                    <span [routerLink]="'/cart'" class="badge bg-info position-absolute top-0 start-0"
                       >{{cartCounter()}}</span
                     >
                   }

@@ -23,8 +23,6 @@ export class NavBlankComponent implements OnInit {
     { id: 1, name: 'home', path: '/home' },
     { id: 2, name: 'products', path: '/products' },
     { id: 3, name: 'cart', path: '/cart' },
-    { id: 4, name: 'categories', path: '/categories' },
-    { id: 5, name: 'brands', path: '/brands' },
   ];
   navLinks: INav[] = [
     { id: 1, class: 'fa-solid fa-cart-shopping' },

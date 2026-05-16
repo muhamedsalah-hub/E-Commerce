@@ -1,13 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import {
   effect,
-  ElementRef,
   Injectable,
-  Signal,
   signal,
   WritableSignal,
 } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import {  Observable } from 'rxjs';
 import { API_BASE_URL } from '../environments/environment';
 
 @Injectable({
@@ -20,10 +18,6 @@ export class CartService {
     effect(() => {
       let x = this.numOfCartItems();
       localStorage.setItem('cartItem', `${x}`);
-
-      // if (this.numOfCartItems() > 3) {
-      //   document.body.style.backgroundColor = 'red';
-      // }
     });
   }
   addToCart(productId: string): Observable<any> {
